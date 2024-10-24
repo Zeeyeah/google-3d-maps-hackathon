@@ -19,6 +19,7 @@ const Map = ({
   const inti = async () => {
     //@ts-expect-error Beta API
     const { Map3DElement, SteadyChangeEvent } = (await loader.importLibrary(
+      // @ts-expect-error Custom Element
       'maps3d'
     )) as google.maps.MapsLibrary
 
