@@ -28,12 +28,28 @@
 }
 
 .main {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  grid-row-start: 2;
+  height: 100%;
+  width: 100%;
 }
-
+.loading {
+  font-family: var(--font-geist-sans);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.01em;
+  color: var(--foreground);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(46, 46, 46, 0.7);
+  z-index: 99;
+}
 .main ol {
   font-family: var(--font-geist-mono);
   padding-left: 0;
