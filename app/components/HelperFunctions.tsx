@@ -5,9 +5,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const easeInOutQuad = (t: number) => {
-  return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2
-}
+// const easeInOutQuad = (t: number) => {
+//   return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2
+// }
 
 const animateCameraOnScroll = (
   targetCenter: [number, number, number],
@@ -24,6 +24,11 @@ const animateCameraOnScroll = (
   const startTilt = Number(gmpMap.getAttribute('tilt'))
   const startHeading = Number(gmpMap.getAttribute('heading'))
   const startRange = Number(gmpMap.getAttribute('range'))
+  // const scrollElement = scrollTriggerElement instanceof HTMLElement
+  //   ? scrollTriggerElement : document.querySelector(scrollTriggerElement)
+  // const scrollHeight = scrollElement
+  //   ? scrollElement.scrollHeight
+  //   : window.innerHeight
 
   // Create a GSAP animation linked to scroll progress
   ScrollTrigger.create({
@@ -31,22 +36,23 @@ const animateCameraOnScroll = (
     start: 'top top', // Start when the top of the hero section hits the top of the viewport
     end: 'bottom top', // End when the bottom of the hero section hits the top of the viewport
     scrub: true, // Smoothly animate based on scroll progress
+    markers: true,
     onUpdate: (self) => {
       // Use easing for smoother progress
-      const easedProgress = easeInOutQuad(self.progress)
+
+      const progress = self.progress
 
       // Interpolate the center coordinates
       const currentCenter = startCenter?.map(
         (startCoord, index) =>
-          startCoord + (targetCenter[index] - startCoord) * easedProgress
+          startCoord + (targetCenter[index] - startCoord) * progress
       )
 
       // Interpolate tilt, heading, and range using eased progress
-      const currentTilt = startTilt + (targetTilt - startTilt) * easedProgress
+      const currentTilt = startTilt + (targetTilt - startTilt) * progress
       const currentHeading =
-        startHeading + (targetHeading - startHeading) * easedProgress
-      const currentRange =
-        startRange + (targetRange - startRange) * easedProgress
+        startHeading + (targetHeading - startHeading) * progress
+      const currentRange = startRange + (targetRange - startRange) * progress
 
       // Update the map attributes based on eased scroll progress
       if (currentCenter) gmpMap.setAttribute('center', currentCenter.join(','))

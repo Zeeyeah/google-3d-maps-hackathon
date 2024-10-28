@@ -1,7 +1,7 @@
 import { Loader } from '@googlemaps/js-api-loader'
 import { DebugUi } from './HelperFunctions'
 
-import React, { useLayoutEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 
 const Map = ({
   setLoaded,
@@ -63,7 +63,7 @@ const Map = ({
     }
   }
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     inti()
   }, [])
 
