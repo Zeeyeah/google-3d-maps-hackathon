@@ -1,5 +1,5 @@
 .debugUI {
-  position: absolute;
+  position: fixed;
   top: 10px;
   right: 10px;
   background-color: rgba(46, 46, 46, 0.7);

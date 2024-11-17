@@ -1,0 +1,47 @@
+.guideSection {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.6),
+    rgba(0, 0, 0, 0.7) 50%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  /* background: rgba(0, 0, 0, 0.1); */
+  z-index: 2;
+  padding: 50px 2vw;
+}
+.overviewHeading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.guideContainer {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+.guideImage img {
+  height: 100vh;
+}
+.guideText {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 40px 0;
+}
+.guideSeason {
+  padding: 20px 0;
+  gap: 20px;
+}
+.guideSeason > div {
+  margin-top: 20px;
+}
+.guideSeason svg {
+  margin-bottom: 10px;
+}
+.trails {
+  height: 80vh;
+}

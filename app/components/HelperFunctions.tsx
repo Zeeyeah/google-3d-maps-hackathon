@@ -2,6 +2,7 @@ import Styles from '@/app/styles/debugUI.module.css'
 import { useEffect, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { Power2 } from 'gsap'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -14,54 +15,117 @@ const animateCameraOnScroll = (
   targetTilt: number,
   targetHeading: number,
   targetRange: number,
-  scrollTriggerElement: string | HTMLElement
+  scrollTriggerElement: string | HTMLElement,
+  ease: string = 'in',
+  scrollStart: string = 'top top',
+  markers: boolean = false
 ) => {
+  const gmpMap = document.querySelector('gmp-map-3d')
+
+  if (!gmpMap) {
+    console.error(
+      'gmp-map-3d element not found. Camera animation cannot be initialized.'
+    )
+    return
+  }
+
+  const startCenter = gmpMap.getAttribute('center')?.split(',').map(Number) || [
+    0, 0, 0,
+  ] // [lat, lng, altitude]
+  const startTilt = Number(gmpMap.getAttribute('tilt'))
+  const startHeading = Number(gmpMap.getAttribute('heading'))
+  const startRange = Number(gmpMap.getAttribute('range'))
+
+  let scrollElement: HTMLElement | null = null
+  if (typeof scrollTriggerElement === 'string') {
+    scrollElement = document.querySelector(scrollTriggerElement)
+  } else {
+    scrollElement = scrollTriggerElement
+  }
+
+  const scrollHeight = scrollElement
+    ? scrollElement.scrollHeight
+    : window.innerHeight
+
+  // Create a GSAP animation linked to scroll progress
+  ScrollTrigger.create({
+    trigger: scrollElement || document.body,
+    start: scrollStart,
+    end: `+=${scrollHeight - 200}`,
+    scrub: true,
+    markers: markers,
+    onUpdate: (self) => {
+      try {
+        // Apply a more natural-looking easing function (e.g., Power2.easeInOut)
+        const easedProgress =
+          ease === 'in'
+            ? Power2.easeIn(self.progress)
+            : Power2.easeOut(self.progress)
+
+        // Interpolate the center coordinates with eased progress
+        const currentCenter = startCenter.map(
+          (startCoord, index) =>
+            startCoord + (targetCenter[index] - startCoord) * easedProgress
+        )
+
+        const currentTilt = startTilt + (targetTilt - startTilt) * easedProgress
+        const currentHeading =
+          startHeading + (targetHeading - startHeading) * easedProgress
+        const currentRange =
+          startRange + (targetRange - startRange) * easedProgress
+
+        // Update map attributes with eased values
+        gmpMap.setAttribute('center', currentCenter.join(','))
+        gmpMap.setAttribute('tilt', `${currentTilt}`)
+        gmpMap.setAttribute('heading', `${currentHeading}`)
+        gmpMap.setAttribute('range', `${currentRange}`)
+      } catch (error) {
+        console.error('Error updating map attributes:', error)
+      }
+    },
+  })
+}
+
+const animateCameraWithCursor = () => {
   const gmpMap = document.querySelector('gmp-map-3d')
 
   if (!gmpMap) return // Ensure the map element is available
 
-  const startCenter = gmpMap.getAttribute('center')?.split(',').map(Number) // [lat, lng, altitude]
-  const startTilt = Number(gmpMap.getAttribute('tilt'))
-  const startHeading = Number(gmpMap.getAttribute('heading'))
-  const startRange = Number(gmpMap.getAttribute('range'))
-  // const scrollElement = scrollTriggerElement instanceof HTMLElement
-  //   ? scrollTriggerElement : document.querySelector(scrollTriggerElement)
-  // const scrollHeight = scrollElement
-  //   ? scrollElement.scrollHeight
-  //   : window.innerHeight
+  const startTilt = Number(gmpMap.getAttribute('tilt')) || 0
+  const startHeading = Number(gmpMap.getAttribute('heading')) || 0
 
-  // Create a GSAP animation linked to scroll progress
-  ScrollTrigger.create({
-    trigger: scrollTriggerElement, // Element or string that triggers the scroll animation
-    start: 'top top', // Start when the top of the hero section hits the top of the viewport
-    end: 'bottom top', // End when the bottom of the hero section hits the top of the viewport
-    scrub: true, // Smoothly animate based on scroll progress
-    markers: true,
-    onUpdate: (self) => {
-      // Use easing for smoother progress
+  // Sensitivity controls how much the cursor movement impacts tilt/heading adjustments
+  const tiltSensitivity = 0.05
+  const headingSensitivity = 0.05
 
-      const progress = self.progress
+  function updateCamera(event: MouseEvent) {
+    const { clientX, clientY } = event
 
-      // Interpolate the center coordinates
-      const currentCenter = startCenter?.map(
-        (startCoord, index) =>
-          startCoord + (targetCenter[index] - startCoord) * progress
-      )
+    // Calculate the center of the screen
+    const screenWidth = window.innerWidth
+    const screenHeight = window.innerHeight
 
-      // Interpolate tilt, heading, and range using eased progress
-      const currentTilt = startTilt + (targetTilt - startTilt) * progress
-      const currentHeading =
-        startHeading + (targetHeading - startHeading) * progress
-      const currentRange = startRange + (targetRange - startRange) * progress
+    // Calculate the offset from the center in the X and Y directions
+    const offsetX = (clientX - screenWidth / 2) / screenWidth
+    const offsetY = (clientY - screenHeight / 2) / screenHeight
 
-      // Update the map attributes based on eased scroll progress
-      if (currentCenter) gmpMap.setAttribute('center', currentCenter.join(','))
-      gmpMap.setAttribute('tilt', `${currentTilt}`)
-      gmpMap.setAttribute('heading', `${currentHeading}`)
-      gmpMap.setAttribute('range', `${currentRange}`)
-    },
-  })
+    // Calculate new tilt and heading based on cursor position
+    const newTilt = startTilt - offsetY * tiltSensitivity * 100
+    const newHeading = startHeading + offsetX * headingSensitivity * 100
+
+    if (!gmpMap) return
+    // Update the map attributes
+    gmpMap.setAttribute('tilt', `${newTilt}`)
+    gmpMap.setAttribute('heading', `${newHeading}`)
+  }
+
+  // Attach the mousemove event listener
+  window.addEventListener('mousemove', updateCamera)
 }
+
+// Call the function to start the cursor-based camera tilt movement
+
+// Call the function to start the cursor-based camera movement
 
 const animateCamera = (
   targetCenter: [number, number, number],
@@ -165,10 +229,11 @@ const rotateCamera = () => {
 // }
 
 const DebugUi = () => {
-  const [collapsed, setCollapsed] = useState(false)
+  const [collapsed, setCollapsed] = useState<boolean>(false)
   const [cords, setCords] = useState<Attributes>({} as Attributes)
   const [map3DElement, setMap3DElement] = useState<HTMLElement>()
   const [controlsEnabled, setControlsEnabled] = useState(true)
+  const [showLabels, setShowLabels] = useState(true)
 
   useEffect(() => {
     const observer = new MutationObserver(() => {
@@ -188,12 +253,24 @@ const DebugUi = () => {
 
   useEffect(() => {
     const mapWrapper = document.querySelector('.map-wrapper')
+
     if (controlsEnabled) {
       mapWrapper?.classList.add('show-controls')
+      // mainConterner.style.position = 'static'
     } else {
       mapWrapper?.classList.remove('show-controls')
+      // mainConterner.style.position = 'relative'
     }
   }, [controlsEnabled, map3DElement])
+
+  useEffect(() => {
+    const element = document.querySelector('gmp-map-3d')
+    if (showLabels) {
+      element?.setAttribute('default-labels-disabled', 'true')
+    } else {
+      element?.removeAttribute('default-labels-disabled')
+    }
+  }, [showLabels, map3DElement])
 
   interface Attributes {
     center: { lat: number; lng: number; altitude: number }
@@ -276,7 +353,7 @@ const DebugUi = () => {
             number | { lat: number; lng: number; altitude: number }
           ]) =>
             key === 'center' ? (
-              <>
+              <div key={key}>
                 {typeof value === 'object' && (
                   <>
                     <li>
@@ -311,10 +388,11 @@ const DebugUi = () => {
                     </li>
                   </>
                 )}
-              </>
+              </div>
             ) : (
               key !== 'style' &&
-              typeof value !== 'object' && (
+              typeof value === 'string' &&
+              typeof value === 'number' && (
                 <li key={key}>
                   {key}:
                   <input
@@ -334,6 +412,29 @@ const DebugUi = () => {
           />{' '}
           <label>Enable controls </label>
         </li>
+        <li>
+          <button
+            onClick={() =>
+              animateCamera(
+                [80.26868503493924, 164.64520554662863, -28212.557008987613],
+                0,
+                194.79977169174398,
+                63738310.25794029,
+                10000
+              )
+            }
+          >
+            animateCamera
+          </button>
+        </li>
+        <li>
+          <input
+            type="checkbox"
+            checked={showLabels}
+            onChange={() => setShowLabels(!showLabels)}
+          />
+          <label>Show Labels</label>
+        </li>
       </ul>
     </div>
   )
@@ -342,6 +443,7 @@ const DebugUi = () => {
 export {
   animateCameraOnScroll,
   animateCamera,
+  animateCameraWithCursor,
   copyCords,
   rotateCamera,
   DebugUi,

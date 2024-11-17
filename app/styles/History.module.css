@@ -1,0 +1,33 @@
+.historySection {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.historySection .left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  padding-right: 50px;
+  gap: 20px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  min-height: 100vh;
+}
+.historySection .right {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.historySection .rightOverlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  transform-origin: bottom;
+}

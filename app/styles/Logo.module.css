@@ -1,0 +1,51 @@
+.heroSection svg path {
+  stroke-dasharray: 100;
+  animation: dash 10s linear infinite;
+  animation-delay: 10s;
+}
+.heroSection svg circle {
+  stroke-dasharray: 100;
+  animation: dash 10s linear infinite;
+  animation-delay: 20s;
+}
+
+@keyframes dash {
+  0% {
+    fill-opacity: 0%;
+    stroke-dashoffset: 1000;
+  }
+
+  23% {
+    fill-opacity: 0%;
+  }
+
+  50% {
+    fill-opacity: 100%;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+.compassLogo {
+  opacity: 60%;
+}
+.compassLogo g,
+.compassLogo circle,
+.compassLogo path {
+  stroke-dasharray: 550;
+  stroke-dashoffset: 50;
+}
+.compassLogo .pin {
+  animation: rotate 20s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

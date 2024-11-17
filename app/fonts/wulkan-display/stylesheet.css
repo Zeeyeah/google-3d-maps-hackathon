@@ -1,0 +1,156 @@
+@font-face {
+    font-family: 'Wulkan Display';
+    src: url('WulkanDisplayBlackItalic.eot');
+    src: local('Wulkan Display Black Italic'), local('WulkanDisplayBlackItalic'),
+        url('WulkanDisplayBlackItalic.eot?#iefix') format('embedded-opentype'),
+        url('WulkanDisplayBlackItalic.woff2') format('woff2'),
+        url('WulkanDisplayBlackItalic.woff') format('woff'),
+        url('WulkanDisplayBlackItalic.ttf') format('truetype');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Wulkan Display';
+    src: url('WulkanDisplayBold.eot');
+    src: local('Wulkan Display Bold'), local('WulkanDisplayBold'),
+        url('WulkanDisplayBold.eot?#iefix') format('embedded-opentype'),
+        url('WulkanDisplayBold.woff2') format('woff2'),
+        url('WulkanDisplayBold.woff') format('woff'),
+        url('WulkanDisplayBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Wulkan Display';
+    src: url('WulkanDisplayRegular.eot');
+    src: local('Wulkan Display Regular'), local('WulkanDisplayRegular'),
+        url('WulkanDisplayRegular.eot?#iefix') format('embedded-opentype'),
+        url('WulkanDisplayRegular.woff2') format('woff2'),
+        url('WulkanDisplayRegular.woff') format('woff'),
+        url('WulkanDisplayRegular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Wulkan Display';
+    src: url('WulkanDisplayLightItalic.eot');
+    src: local('Wulkan Display Light Italic'), local('WulkanDisplayLightItalic'),
+        url('WulkanDisplayLightItalic.eot?#iefix') format('embedded-opentype'),
+        url('WulkanDisplayLightItalic.woff2') format('woff2'),
+        url('WulkanDisplayLightItalic.woff') format('woff'),
+        url('WulkanDisplayLightItalic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Wulkan Display';
+    src: url('WulkanDisplayMediumItalic.eot');
+    src: local('Wulkan Display Medium Italic'), local('WulkanDisplayMediumItalic'),
+        url('WulkanDisplayMediumItalic.eot?#iefix') format('embedded-opentype'),
+        url('WulkanDisplayMediumItalic.woff2') format('woff2'),
+        url('WulkanDisplayMediumItalic.woff') format('woff'),
+        url('WulkanDisplayMediumItalic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Wulkan Display';
+    src: url('WulkanDisplayLight.eot');
+    src: local('Wulkan Display Light'), local('WulkanDisplayLight'),
+        url('WulkanDisplayLight.eot?#iefix') format('embedded-opentype'),
+        url('WulkanDisplayLight.woff2') format('woff2'),
+        url('WulkanDisplayLight.woff') format('woff'),
+        url('WulkanDisplayLight.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Wulkan Display';
+    src: url('WulkanDisplayItalic.eot');
+    src: local('Wulkan Display Italic'), local('WulkanDisplayItalic'),
+        url('WulkanDisplayItalic.eot?#iefix') format('embedded-opentype'),
+        url('WulkanDisplayItalic.woff2') format('woff2'),
+        url('WulkanDisplayItalic.woff') format('woff'),
+        url('WulkanDisplayItalic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Wulkan Display';
+    src: url('WulkanDisplayMedium.eot');
+    src: local('Wulkan Display Medium'), local('WulkanDisplayMedium'),
+        url('WulkanDisplayMedium.eot?#iefix') format('embedded-opentype'),
+        url('WulkanDisplayMedium.woff2') format('woff2'),
+        url('WulkanDisplayMedium.woff') format('woff'),
+        url('WulkanDisplayMedium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Wulkan Display';
+    src: url('WulkanDisplayBlack.eot');
+    src: local('Wulkan Display Black'), local('WulkanDisplayBlack'),
+        url('WulkanDisplayBlack.eot?#iefix') format('embedded-opentype'),
+        url('WulkanDisplayBlack.woff2') format('woff2'),
+        url('WulkanDisplayBlack.woff') format('woff'),
+        url('WulkanDisplayBlack.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Wulkan Display';
+    src: url('WulkanDisplayBoldItalic.eot');
+    src: local('Wulkan Display Bold Italic'), local('WulkanDisplayBoldItalic'),
+        url('WulkanDisplayBoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('WulkanDisplayBoldItalic.woff2') format('woff2'),
+        url('WulkanDisplayBoldItalic.woff') format('woff'),
+        url('WulkanDisplayBoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Wulkan Display';
+    src: url('WulkanDisplaySemiBoldItalic.eot');
+    src: local('Wulkan Display SemiBold Italic'), local('WulkanDisplaySemiBoldItalic'),
+        url('WulkanDisplaySemiBoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('WulkanDisplaySemiBoldItalic.woff2') format('woff2'),
+        url('WulkanDisplaySemiBoldItalic.woff') format('woff'),
+        url('WulkanDisplaySemiBoldItalic.ttf') format('truetype');
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Wulkan Display';
+    src: url('WulkanDisplaySemiBold.eot');
+    src: local('Wulkan Display SemiBold'), local('WulkanDisplaySemiBold'),
+        url('WulkanDisplaySemiBold.eot?#iefix') format('embedded-opentype'),
+        url('WulkanDisplaySemiBold.woff2') format('woff2'),
+        url('WulkanDisplaySemiBold.woff') format('woff'),
+        url('WulkanDisplaySemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+

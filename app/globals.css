@@ -31,6 +31,16 @@ html.lenis body {
   height: auto;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--font-wulkan-display);
+}
+h6 {
+  font-family: var(--font-montserrat);
+}
 .lenis.lenis-smooth {
   scroll-behavior: auto !important;
 }
@@ -57,6 +67,12 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+p {
+  font-family: var(--font-montserrat);
+  line-height: 150%;
+  opacity: 80%;
+}
 .map-wrapper {
   width: 100%;
   height: 100%;
@@ -64,13 +80,80 @@ a {
   position: fixed;
   top: 0;
   left: 0;
+  filter: sepia(0.3) brightness(0.9) contrast(1.5) saturate(1.9)
+    hue-rotate(-10deg);
+  /* filter: brightness(1.2) contrast(1.4) saturate(2) hue-rotate(210deg); */
 }
 .map-wrapper.show-controls {
   pointer-events: none;
+}
+.gsap-text-container {
+  overflow: hidden;
+  margin: 0;
+  line-height: normal;
 }
 
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
+  }
+}
+h1 {
+  font-size: 4.5rem;
+  margin-top: 1rem;
+}
+h2 {
+  font-size: 3rem;
+  margin-top: 1rem;
+}
+h3 {
+  font-size: 1.5rem;
+  opacity: 0.8;
+}
+h6 {
+  font-size: 1.5rem;
+  opacity: 90%;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 1200px) {
+  h1 {
+    font-size: 3rem;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 2rem;
+  }
+  h4 {
+    font-size: 1.5rem;
+  }
+  h5 {
+    font-size: 1.25rem;
+  }
+  h6 {
+    font-size: 1.25rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  h3 {
+    font-size: 1.75rem;
+  }
+  h4 {
+    font-size: 1.25rem;
+  }
+  h5 {
+    font-size: 1rem;
+  }
+  h6 {
+    font-size: 1.25rem;
   }
 }
