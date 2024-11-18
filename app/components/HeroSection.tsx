@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react'
 import Styles from '@/app/styles/HeroSection.module.css'
 import { animateCameraOnScroll } from './HelperFunctions'
-import { SplitText } from 'gsap-trial/SplitText'
 import gsap from 'gsap'
 import { useMapContext } from './MapContext'
 import SplitType from 'split-type'
-gsap.registerPlugin(SplitText)
+
 const HeroSection = () => {
   const { isSteady } = useMapContext()
 
