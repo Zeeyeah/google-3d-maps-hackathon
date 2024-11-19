@@ -110,12 +110,23 @@ h3 {
   font-size: 1.5rem;
   opacity: 0.8;
 }
+h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  opacity: 0.8;
+}
+h5 {
+  font-size: 1.25rem;
+  opacity: 0.8;
+}
 h6 {
   font-size: 1.5rem;
   opacity: 90%;
   font-weight: 400;
 }
-
+.vAygCK-api-load-alpha-banner {
+  display: none !important;
+}
 @media screen and (max-width: 1200px) {
   h1 {
     font-size: 3rem;

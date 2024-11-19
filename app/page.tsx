@@ -8,6 +8,8 @@ import History from './components/History'
 import { MapProvider } from './components/MapContext'
 import InitialLoadScreen from './components/InitialLoadScreen'
 import Trails from './components/Trails'
+import ViewPoints from './components/ViewPoints'
+import Footer from './components/Footer'
 
 export default function Home() {
   return (
@@ -20,7 +22,9 @@ export default function Home() {
             <HeroSection />
             <OverviewSection />
             <Trails />
-            <History />
+            {/* <History /> */}
+            <ViewPoints />
+            <Footer />
           </div>
         </main>
       </ReactLenis>

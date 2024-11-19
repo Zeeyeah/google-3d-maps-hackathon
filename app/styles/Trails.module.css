@@ -12,7 +12,7 @@
 .trailsContainer {
   background-color: #fff;
   color: black;
-  padding: 10px;
+  padding: 20px 30px;
   display: flex;
   flex-direction: column;
 }
@@ -52,4 +52,20 @@
 .gotemba {
   min-height: 100vh;
   width: 100%;
+}
+.trailsSelector {
+  display: flex;
+  flex-direction: column;
+}
+.trailsBefore {
+  font-family: 'Monserrat', sans-serif;
+}
+.trailsBefore h3 {
+  margin-bottom: 10px;
+}
+.trailsBefore > ul {
+  list-style: none;
+}
+.trailsBefore li {
+  margin-bottom: 20px;
 }

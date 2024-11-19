@@ -1,0 +1,49 @@
+.viewpoints {
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 60%,
+    rgba(0, 0, 0, 1)
+  );
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: end;
+  padding: 10px;
+  position: relative;
+}
+.viewpointsContainer {
+  display: flex;
+  gap: 20px;
+}
+.viiewPointCard {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  flex-direction: column;
+  max-width: 200px;
+  height: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+}
+.viiewPointCard.selected {
+  border: 1px solid rgba(255, 255, 255, 1);
+  background-color: #fff;
+  color: black;
+}
+.viiewPointCard.selected svg {
+  fill: #000;
+}
+.selectedViewPoint {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0px;
+  z-index: 10;
+  background-color: white;
+  color: black;
+  padding: 20px;
+  transform-origin: right;
+}

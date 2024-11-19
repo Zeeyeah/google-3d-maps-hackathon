@@ -1,0 +1,46 @@
+.footer {
+  height: 300px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1),
+    rgba(0, 0, 0, 0.9) 100%
+  );
+  background: white;
+  color: black;
+  padding: 30px 5vw;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.footer > div {
+  max-width: 400px;
+}
+.footer h3 {
+  position: relative;
+  width: fit-content;
+  margin-bottom: 10px;
+}
+.footer h3:after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 3px;
+  background-color: #ec6161;
+  bottom: 2px;
+  left: 0;
+}
+.footer ul {
+  list-style: none;
+  font-family: 'Montserrat', sans-serif;
+  opacity: 0.8;
+  line-height: 30px;
+  font-weight: 400;
+}
+.footer a {
+  text-decoration: underline;
+  transition: all 0.2s ease-in-out;
+}
+.footer a:hover {
+  opacity: 1;
+  color: #de3a3a;
+}

@@ -89,43 +89,56 @@ const animateCameraOnScroll = (
 const animateCameraWithCursor = () => {
   const gmpMap = document.querySelector('gmp-map-3d')
 
-  if (!gmpMap) return // Ensure the map element is available
+  if (!gmpMap) return
 
   const startTilt = Number(gmpMap.getAttribute('tilt')) || 0
   const startHeading = Number(gmpMap.getAttribute('heading')) || 0
 
-  // Sensitivity controls how much the cursor movement impacts tilt/heading adjustments
   const tiltSensitivity = 0.05
   const headingSensitivity = 0.05
+
+  let currentTilt = startTilt
+  let currentHeading = startHeading
+  let targetTilt = startTilt
+  let targetHeading = startHeading
+
+  const animationSpeed = 0.1 // Adjust this for smoother/slower interpolation
 
   function updateCamera(event: MouseEvent) {
     const { clientX, clientY } = event
 
-    // Calculate the center of the screen
     const screenWidth = window.innerWidth
     const screenHeight = window.innerHeight
 
-    // Calculate the offset from the center in the X and Y directions
     const offsetX = (clientX - screenWidth / 2) / screenWidth
     const offsetY = (clientY - screenHeight / 2) / screenHeight
 
-    // Calculate new tilt and heading based on cursor position
-    const newTilt = startTilt - offsetY * tiltSensitivity * 100
-    const newHeading = startHeading + offsetX * headingSensitivity * 100
-
-    if (!gmpMap) return
-    // Update the map attributes
-    gmpMap.setAttribute('tilt', `${newTilt}`)
-    gmpMap.setAttribute('heading', `${newHeading}`)
+    // Calculate the target tilt and heading based on cursor position
+    targetTilt = startTilt - offsetY * tiltSensitivity * 100
+    targetHeading = startHeading + offsetX * headingSensitivity * 100
   }
 
-  // Attach the mousemove event listener
+  function animate() {
+    // Smoothly interpolate towards the target values
+    currentTilt += (targetTilt - currentTilt) * animationSpeed
+    currentHeading += (targetHeading - currentHeading) * animationSpeed
+
+    // Update the camera tilt and heading
+    if (gmpMap) {
+      gmpMap.setAttribute('tilt', `${currentTilt}`)
+      gmpMap.setAttribute('heading', `${currentHeading}`)
+    }
+
+    // Continuously request animation frame
+    requestAnimationFrame(animate)
+  }
+
+  // Start the animation loop
+  requestAnimationFrame(animate)
+
+  // Attach the mousemove event listener to update target values
   window.addEventListener('mousemove', updateCamera)
 }
-
-// Call the function to start the cursor-based camera tilt movement
-
-// Call the function to start the cursor-based camera movement
 
 const animateCamera = (
   targetCenter: [number, number, number],

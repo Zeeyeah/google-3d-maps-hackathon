@@ -1,12 +1,19 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import Styles from '@/app/styles/HeroSection.module.css'
-import { animateCameraOnScroll } from './HelperFunctions'
+import {
+  animateCameraOnScroll,
+  animateCameraWithCursor,
+} from './HelperFunctions'
 import gsap from 'gsap'
 import { useMapContext } from './MapContext'
 import SplitType from 'split-type'
+import { useLenis } from 'lenis/react'
 
 const HeroSection = () => {
   const { isSteady } = useMapContext()
+
+  const lenis = useLenis()
+  const animationStarted = useRef(false)
 
   useEffect(() => {
     const heroText = document.getElementById('mount-fuji-hero-text')
@@ -37,15 +44,19 @@ const HeroSection = () => {
         '#hero-section',
         'out'
       )
-      // animateCameraWithCursor()
     }
-    console.log(isSteady)
   }, [isSteady])
+
+  // useEffect(() => {
+  //   if (lenis && lenis.scroll === 0 && !animationStarted.current) {
+  //     animationStarted.current = true // Mark animation as started
+  //     animateCameraWithCursor()
+  //   }
+  // }, [lenis?.scroll])
 
   return (
     <div className={Styles.heroSection} id="hero-section">
       <div className={Styles.logoContainer}>
-        {/* <Logo /> */}
         <div className="gsap-text-container">
           <h2 id="mount-fuji-hero-text">
             {' '}

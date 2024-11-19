@@ -15,9 +15,9 @@ const FujinomiyaTrail = () => {
       ScrollTrigger.create({
         trigger: '#fujinomiya',
         start: 'top center',
-        end: 'bottom center',
+        end: 'bottom 20%',
         onEnter: () => animateIn(),
-        onEnterBack: () => animateIn(),
+        onEnterBack: () => animateInInstant(),
       })
     }
   }, [isSteady])
@@ -28,6 +28,15 @@ const FujinomiyaTrail = () => {
       18.35798798304783,
       0,
       2000
+    )
+  }
+  const animateInInstant = () => {
+    animateCamera(
+      [35.321966646176165, 138.73392133066048, 2426.846624266959],
+      99.26498214629814,
+      18.35798798304783,
+      0,
+      0
     )
   }
 

@@ -246,45 +246,42 @@ const Trails = () => {
                     />
                   </svg>
                 </h3>
-                {/* <div className={Styles.keyPoints}>
-                  {trail['key-points'].map((point, index) => (
-                    <p key={index}>{point}</p>
-                  ))}
-                </div>
-                <div className={Styles.time}>
-                  <h4>Estimated Time</h4>
-                  <div>
-                    <svg
-                      width="18"
-                      height="19"
-                      viewBox="0 0 18 19"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M18 1.5C18 0.947715 17.5523 0.5 17 0.5H8C7.44772 0.5 7 0.947715 7 1.5C7 2.05228 7.44772 2.5 8 2.5H16V10.5C16 11.0523 16.4477 11.5 17 11.5C17.5523 11.5 18 11.0523 18 10.5V1.5ZM1.70711 18.2071L17.7071 2.20711L16.2929 0.792893L0.292893 16.7929L1.70711 18.2071Z"
-                        fill={trail.color}
-                      />
-                    </svg>
-                    {trail['acent-time']}
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 18 18"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M-5.96046e-08 17C-1.07887e-07 17.5523 0.447715 18 1 18L10 18C10.5523 18 11 17.5523 11 17C11 16.4477 10.5523 16 10 16L2 16L2 8C2 7.44771 1.55229 7 1 7C0.447716 7 7.75483e-07 7.44771 7.272e-07 8L-5.96046e-08 17ZM16.2929 0.292893L0.292893 16.2929L1.70711 17.7071L17.7071 1.70711L16.2929 0.292893Z"
-                        fill={trail.color}
-                      />
-                    </svg>
-                    {trail['decent-time']}
-                  </div>
-                </div>
-                <div className={Styles.difficulty}>{trail.difficulty}</div> */}
               </div>
             ))}
+          </div>
+          <div className={Styles.trailsBefore}>
+            <li>
+              <h3>Before you go</h3>
+              <p>
+                Hiking Mount Fuji is an incredible experience, but preparation
+                is key to ensuring a safe and enjoyable journey. Here's a brief
+                guide on what to do and carry:
+              </p>
+            </li>
+            <ul>
+              <li>
+                <h3>What to Carry for the Hike</h3>
+                <p>
+                  Dress in layers: a moisture-wicking base, warm middle layers,
+                  and a waterproof jacket. Wear sturdy boots and bring gloves
+                  and a hat. Essential items include water (2L), snacks, a
+                  headlamp, trekking poles, and a small backpack.
+                </p>
+              </li>
+              <li>
+                <h3>Safety and Miscellaneous Essentials</h3>
+                <p>
+                  Pack a first aid kit with altitude sickness medication, rain
+                  gear, and a trail map. Carry cash for huts and vending
+                  machines, and consider bringing an oxygen canister and a
+                  portable charger.
+                </p>
+              </li>
+              <li>
+                <h3></h3>
+                <p></p>
+              </li>
+            </ul>
           </div>
         </div>
         <YoshidaTrail />

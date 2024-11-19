@@ -3,12 +3,14 @@ import styles from '@/app/page.module.css'
 import { useMapContext } from './MapContext'
 import gsap from 'gsap'
 import { useLenis } from 'lenis/react'
+import Logo from './Logo'
 
 const InitialLoadScreen = () => {
   const { isSteady } = useMapContext()
   const [loading, setLoading] = useState<boolean>(true)
   const loadingRef = useRef<HTMLDivElement>(null)
   const lenis = useLenis()
+
   useEffect(() => {
     const body = document.body
     body.style.overflow = 'hidden'
@@ -33,7 +35,7 @@ const InitialLoadScreen = () => {
   if (loading)
     return (
       <div ref={loadingRef} className={styles.loading}>
-        <p>Loading...</p>
+        <Logo />
       </div>
     )
 }

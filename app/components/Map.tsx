@@ -6,7 +6,7 @@ import { useMapContext } from './MapContext'
 
 const Map = () => {
   const mapRef = useRef() as React.MutableRefObject<HTMLElement>
-  const { setIsSteady } = useMapContext()
+  const { setIsSteady, setIsLoading } = useMapContext()
 
   const loader = new Loader({
     apiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY as string,
@@ -42,8 +42,6 @@ const Map = () => {
         mainElement?.appendChild(mapWrapper)
         mapWrapper.appendChild(mapRef.current)
 
-        // mapRef.current.appendChild(model)
-
         // @ts-expect-error Google Maps API Cutom Element
         mapRef.current.defaultLabelsDisabled = true
         // @ts-expect-error Google Maps API Cutom Element
@@ -55,13 +53,10 @@ const Map = () => {
             if (event.isSteady) {
               console.log('The Map3DElement is now steady.')
               setIsSteady(true)
+              setIsLoading(false)
+            } else {
+              setIsLoading(true)
             }
-          }
-        })
-
-        mapRef.current.addEventListener('gmp-click', (event: Event) => {
-          if (event instanceof MouseEvent) {
-            console.log('The Map3DElement was clicked.', event)
           }
         })
       }

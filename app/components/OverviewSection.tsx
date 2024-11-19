@@ -17,50 +17,6 @@ const OverviewSection = () => {
 
       if (!gmpMap) return
       const startHeading = Number(gmpMap.getAttribute('heading'))
-      const guideTitle = new SplitType('#guide-title')
-      const guideText = new SplitType(
-        '#guide-text p, #guide-section h6, #guide-section h3'
-      )
-      const guideSeason = new SplitType('#guide-season p')
-
-      gsap.from(guideTitle.words, {
-        duration: 1,
-        y: 100,
-        stagger: 0.05,
-        ease: 'power4.inOut',
-        scrollTrigger: {
-          trigger: '#guide-section',
-          start: 'top 70%',
-          toggleActions: 'play none none reverse',
-        },
-      })
-
-      gsap.from(guideText.lines, {
-        duration: 1,
-        y: 100,
-        opacity: 0,
-        stagger: 0.05,
-        ease: 'power4.inOut',
-        scrollTrigger: {
-          trigger: '#guide-text',
-          start: 'top 70%',
-          toggleActions: 'play none none reverse',
-        },
-      })
-
-      gsap.from(guideSeason.lines, {
-        duration: 1,
-        y: 100,
-        opacity: 0,
-        stagger: 0.05,
-        ease: 'power4.inOut',
-        scrollTrigger: {
-          trigger: '#guide-season',
-          start: 'top 70%',
-          toggleActions: 'play none none reverse',
-        },
-      })
-
       const scrollTrigger = ScrollTrigger.create({
         trigger: '#guide-section',
         start: 'top top',
