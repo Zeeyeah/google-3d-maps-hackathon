@@ -254,8 +254,8 @@ const Trails = () => {
               <h3>Before you go</h3>
               <p>
                 Hiking Mount Fuji is an incredible experience, but preparation
-                is key to ensuring a safe and enjoyable journey. Here's a brief
-                guide on what to do and carry:
+                is key to ensuring a safe and enjoyable journey. Here&apos;s a
+                brief guide on what to do and carry:
               </p>
             </li>
             <ul>

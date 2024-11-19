@@ -1,19 +1,12 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect } from 'react'
 import Styles from '@/app/styles/HeroSection.module.css'
-import {
-  animateCameraOnScroll,
-  animateCameraWithCursor,
-} from './HelperFunctions'
+import { animateCameraOnScroll } from './HelperFunctions'
 import gsap from 'gsap'
 import { useMapContext } from './MapContext'
 import SplitType from 'split-type'
-import { useLenis } from 'lenis/react'
 
 const HeroSection = () => {
   const { isSteady } = useMapContext()
-
-  const lenis = useLenis()
-  const animationStarted = useRef(false)
 
   useEffect(() => {
     const heroText = document.getElementById('mount-fuji-hero-text')

@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import Styles from '@/app/styles/Overview.module.css'
 import { animateCameraOnScroll } from './HelperFunctions'
-import SplitType from 'split-type'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useMapContext } from './MapContext'
