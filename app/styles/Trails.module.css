@@ -45,14 +45,6 @@
   bottom: 2px;
   left: 0;
 }
-
-.fujinomiya,
-.yoshida,
-.subashi,
-.gotemba {
-  min-height: 100vh;
-  width: 100%;
-}
 .trailsSelector {
   display: flex;
   flex-direction: column;
@@ -68,4 +60,60 @@
 }
 .trailsBefore li {
   margin-bottom: 20px;
+}
+
+.fujinomiya,
+.yoshida,
+.subashi,
+.gotemba {
+  min-height: 300px;
+  width: 100%;
+  margin-top: 50px;
+}
+.fujinomiya h2,
+.yoshida h2,
+.subashi h2,
+.gotemba h2 {
+  margin-bottom: 20px;
+  position: relative;
+  width: fit-content;
+}
+.fujinomiya h2::after,
+.yoshida h2::after,
+.subashi h2::after,
+.gotemba h2::after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 4px;
+  background-color: var(--card-accent);
+  bottom: 4px;
+  left: 0;
+}
+.keypoints {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.keypoints > span {
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-weight: 600;
+  font-family: 'Monserrat', sans-serif;
+}
+.stats {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 30px;
+}
+.stats > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.stats > div > p {
+  margin-top: 5px;
 }

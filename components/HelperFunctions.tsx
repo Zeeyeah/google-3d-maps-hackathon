@@ -6,10 +6,6 @@ import { Power2 } from 'gsap'
 
 gsap.registerPlugin(ScrollTrigger)
 
-// const easeInOutQuad = (t: number) => {
-//   return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2
-// }
-
 const animateCameraOnScroll = (
   targetCenter: [number, number, number],
   targetTilt: number,
@@ -47,7 +43,6 @@ const animateCameraOnScroll = (
     ? scrollElement.scrollHeight
     : window.innerHeight
 
-  // Create a GSAP animation linked to scroll progress
   ScrollTrigger.create({
     trigger: scrollElement || document.body,
     start: scrollStart,
@@ -56,7 +51,6 @@ const animateCameraOnScroll = (
     markers: markers,
     onUpdate: (self) => {
       try {
-        // Apply a more natural-looking easing function (e.g., Power2.easeInOut)
         const easedProgress =
           ease === 'in'
             ? Power2.easeIn(self.progress)
@@ -74,7 +68,6 @@ const animateCameraOnScroll = (
         const currentRange =
           startRange + (targetRange - startRange) * easedProgress
 
-        // Update map attributes with eased values
         gmpMap.setAttribute('center', currentCenter.join(','))
         gmpMap.setAttribute('tilt', `${currentTilt}`)
         gmpMap.setAttribute('heading', `${currentHeading}`)
@@ -86,13 +79,16 @@ const animateCameraOnScroll = (
   })
 }
 
-const animateCameraWithCursor = () => {
+let animationFrameId: number
+let updateCamera: (event: MouseEvent) => void
+
+const animateCameraWithCursor = (tilt: number, heading: number) => {
   const gmpMap = document.querySelector('gmp-map-3d')
 
   if (!gmpMap) return
 
-  const startTilt = Number(gmpMap.getAttribute('tilt')) || 0
-  const startHeading = Number(gmpMap.getAttribute('heading')) || 0
+  const startTilt = tilt
+  const startHeading = heading
 
   const tiltSensitivity = 0.05
   const headingSensitivity = 0.05
@@ -102,9 +98,10 @@ const animateCameraWithCursor = () => {
   let targetTilt = startTilt
   let targetHeading = startHeading
 
-  const animationSpeed = 0.1 // Adjust this for smoother/slower interpolation
+  // smoother/slower interpolation
+  const animationSpeed = 0.1
 
-  function updateCamera(event: MouseEvent) {
+  updateCamera = (event: MouseEvent) => {
     const { clientX, clientY } = event
 
     const screenWidth = window.innerWidth
@@ -113,31 +110,43 @@ const animateCameraWithCursor = () => {
     const offsetX = (clientX - screenWidth / 2) / screenWidth
     const offsetY = (clientY - screenHeight / 2) / screenHeight
 
-    // Calculate the target tilt and heading based on cursor position
     targetTilt = startTilt - offsetY * tiltSensitivity * 100
     targetHeading = startHeading + offsetX * headingSensitivity * 100
   }
 
-  function animate() {
-    // Smoothly interpolate towards the target values
+  const animate = () => {
     currentTilt += (targetTilt - currentTilt) * animationSpeed
     currentHeading += (targetHeading - currentHeading) * animationSpeed
 
-    // Update the camera tilt and heading
     if (gmpMap) {
       gmpMap.setAttribute('tilt', `${currentTilt}`)
       gmpMap.setAttribute('heading', `${currentHeading}`)
     }
 
-    // Continuously request animation frame
-    requestAnimationFrame(animate)
+    animationFrameId = requestAnimationFrame(animate)
   }
 
-  // Start the animation loop
-  requestAnimationFrame(animate)
+  // animation loop Start
+  animationFrameId = requestAnimationFrame(animate)
 
-  // Attach the mousemove event listener to update target values
   window.addEventListener('mousemove', updateCamera)
+}
+
+const stopCameraAnimation = (tilt: number, heading: number) => {
+  const gmpMap = document.querySelector('gmp-map-3d')
+
+  if (!gmpMap) return
+
+  window.removeEventListener('mousemove', updateCamera)
+
+  const initialTilt = tilt
+  const initialHeading = heading
+
+  gmpMap.setAttribute('tilt', `${initialTilt}`)
+  gmpMap.setAttribute('heading', `${initialHeading}`)
+
+  // Stop the animation loop
+  cancelAnimationFrame(animationFrameId)
 }
 
 const animateCamera = (
@@ -149,7 +158,7 @@ const animateCamera = (
 ) => {
   const gmpMap = document.querySelector('gmp-map-3d')
 
-  if (!gmpMap) return // Ensure the map element is available
+  if (!gmpMap) return
 
   const startCenter = gmpMap.getAttribute('center')?.split(',').map(Number) // [lat, lng, altitude]
   const startTilt = Number(gmpMap.getAttribute('tilt'))
@@ -162,20 +171,17 @@ const animateCamera = (
     const elapsedTime = currentTime - startTime
     const progress = Math.min(elapsedTime / duration, 1)
 
-    // Interpolate center coordinates
     const currentCenter = startCenter?.map(
       (startCoord, index) =>
         startCoord + (targetCenter[index] - startCoord) * progress
     )
 
-    // Interpolate tilt and heading and range
     const currentTilt = startTilt + (targetTilt - startTilt) * progress
     const currentHeading =
       startHeading + (targetHeading - startHeading) * progress
 
     const currentRange = startRange + (targetRange - startRange) * progress
 
-    // Update the map attributes
     if (!currentCenter) return
     gmpMap?.setAttribute('center', currentCenter.join(','))
     gmpMap?.setAttribute('tilt', `${currentTilt}`)
@@ -194,7 +200,7 @@ const copyCords = () => {
   let tempCords = ''
   const mapRef = document.querySelector('gmp-map-3d')
 
-  if (!mapRef) return // Ensure the map element is available
+  if (!mapRef) return
 
   const tempLat = Number(mapRef.getAttribute('center')?.split(',')[0])
   const tempLng = Number(mapRef.getAttribute('center')?.split(',')[1])
@@ -210,7 +216,7 @@ const copyCordsAsObject = () => {
   let tempCords = ''
   const mapRef = document.querySelector('gmp-map-3d')
 
-  if (!mapRef) return // Ensure the map element is available
+  if (!mapRef) return
 
   const tempLat = Number(mapRef.getAttribute('center')?.split(',')[0])
   const tempLng = Number(mapRef.getAttribute('center')?.split(',')[1])
@@ -226,7 +232,7 @@ const copyCordsAsObject = () => {
 const rotateCamera = () => {
   const gmap = document.querySelector('gmp-map-3d')
 
-  if (!gmap) return // Ensure the map element is available
+  if (!gmap) return
 
   const currentHeading = Number(gmap.getAttribute('heading'))
   const newHeading = (currentHeading + 90) % 30
@@ -260,7 +266,6 @@ const DebugUi = () => {
     // Start observing changes in the DOM
     observer.observe(document.body, { childList: true, subtree: true })
 
-    // Clean up the observer on component unmount
     return () => observer.disconnect()
   }, [])
 
@@ -334,22 +339,22 @@ const DebugUi = () => {
   const updateAttributes = (value: string, key: string, subkey?: string) => {
     const gmap = document.querySelector('gmp-map-3d')
 
-    if (!gmap) return // Ensure the map element is available
+    if (!gmap) return
 
     const center = gmap.getAttribute('center')?.split(',').map(Number) // [lat, lng, altitude]
 
-    if (!center || center.length !== 3) return // Ensure 'center' has three elements
+    if (!center || center.length !== 3) return
 
     if (subkey !== undefined) {
       const subkeyIndex = Number(subkey)
 
       // Check if subkeyIndex is a valid number and within the range [0, 2]
       if (!isNaN(subkeyIndex) && subkeyIndex >= 0 && subkeyIndex <= 2) {
-        center[subkeyIndex] = Number(value) // Update the corresponding index with the new value
+        center[subkeyIndex] = Number(value)
         gmap.setAttribute('center', `${center[0]},${center[1]},${center[2]}`)
       }
     } else {
-      gmap.setAttribute(key, value) // Update the attribute directly if no subkey is provided
+      gmap.setAttribute(key, value)
     }
   }
 
@@ -461,4 +466,5 @@ export {
   rotateCamera,
   DebugUi,
   copyCordsAsObject,
+  stopCameraAnimation,
 }

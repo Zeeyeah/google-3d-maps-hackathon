@@ -29,7 +29,7 @@
 .loading svg circle {
   stroke-dasharray: 500px;
   animation: dash 5s ease-in infinite;
-  stroke-width: 0.5px;
+  strokewidth: 0.5px;
 }
 @keyframes dash {
   0% {

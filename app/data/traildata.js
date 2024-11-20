@@ -1,15 +1,45 @@
+// interface Cord {
+//   center: [number, number, number]
+//   tilt: number,
+// }
+
+// interface Trail {
+//   id: string
+//   name: string
+//   placeID: string
+//   length: number 
+//   'key-points': string[] 
+//   'acent-time': string 
+//   'decent-time': string 
+//   difficulty: string 
+//   description: string[] 
+//   cords: []
+//   cameraCords: {
+//     center: [number, number, number] 
+//     tilt: number 
+//     heading: number 
+//     range: number 
+//   }
+//   color: string 
+//   'border-color': string 
+//   markers: any[] 
+// }
+
 const trailData =
   [
     {
       "id": "yoshida-trail",
       "name": "Yoshida Trail",
-      "key-points": ['Most popular.',
-        'Beginner friendly.',
-        'Stunning sunrise views.'
+      "placeID": "ChIJAfFbqFpiGWARQPEHkSBGfqM",
+      "length": 13.8,
+      "key-points": ['Most popular',
+        'Beginner friendly',
+        'Stunning sunrise views'
       ],
       "acent-time": '5-7 hours',
       "decent-time": '3-5 hours',
       "difficulty": 'Easy',
+      "description": ["Mt. Fuji: Yoshida Trail (富士山: 吉田ルート) This trail begins from Fuji Subaru Line 5th Station and joins Yoshida Trail at 6th Station. The Yoshida Trail is the most popular of the four main routes on Mt. Fuji.", "On the way, there are many facilities such as first-aid centers, restrooms, and mountain huts.However, please be aware that there are almost no such facilities on your descend"],
       "cords": [
         {
           "lat": 35.365,
@@ -837,6 +867,12 @@ const trailData =
           "altitude": 2440
         }
       ],
+      "cameraCords": {
+        "center": [35.380278765790976, 138.73253456234798, 2921.8199899518586],
+        "tilt": 87.44491350603063,
+        "heading": -148.81856804123015,
+        "range": 3260.9109676396474,
+      },
       "color": "#FCE33A",
       "border-color": "rgba(255, 255, 165, 0.3)",
       "markers": [
@@ -877,10 +913,12 @@ const trailData =
     {
       "id": "subashi-trail",
       "name": "Subashi Trail",
-      "key-points": ['Less crowded and quieter.',
-        'Green forest at lower altitudes.',
-        'Sand run on the descent.'
+      "placeID": 'ChIJrwXEVzhjGWARK8PePjnduXQ',
+      "key-points": ['Less crowded and quieter',
+        'Green forest at lower altitudes',
+        'Sand run on the descent'
       ],
+      "length": 13.5,
       "acent-time": '6-8 hours',
       "decent-time": '3-5 hours',
       "difficulty": 'Moderate',
@@ -1461,6 +1499,16 @@ const trailData =
           "altitude": 1976
         }
       ],
+      "description": [
+        "Mt. Fuji: Subashiri Trail (富士山: 須走ルート) starts at Subashiri 5th Station and is known for its serene forested sections at lower altitudes.",
+        "This trail joins the Yoshida Trail at the 8th Station. While descending, climbers enjoy the 'Osunabashiri' section, a sandy slope that allows for quick and fun descents."
+      ],
+      "cameraCords": {
+        "center": [35.37591783190281, 138.76289296106333, 2289.501175267729],
+        "tilt": 95.55945103462895,
+        "heading": -77.28043602539024,
+        "range": 2893.9988153683953,
+      },
       "color": "#FF8C00",
       "border-color": "rgba(255, 199, 102, 0.3)",
       "markers": [
@@ -1491,654 +1539,14 @@ const trailData =
       ]
     },
     {
-      "id": "fujinomiya-trail",
-      "name": "Fujinomiya Trail",
-      "key-points": ['Shortest route to the summit.',
-        'Great views of the Pacific Ocean.',
-        'Second most popular.'
-      ],
-      "acent-time": '5-7 hours',
-      "decent-time": '3-5 hours',
-      "difficulty": 'Challenging',
-      "cords": [
-        {
-          "lat": 35.33658,
-          "lng": 138.73411,
-          "altitude": 2380
-        },
-        {
-          "lat": 35.33665,
-          "lng": 138.73414,
-          "altitude": 2384
-        },
-        {
-          "lat": 35.337,
-          "lng": 138.73443,
-          "altitude": 2401
-        },
-        {
-          "lat": 35.33731,
-          "lng": 138.73455,
-          "altitude": 2413
-        },
-        {
-          "lat": 35.33767,
-          "lng": 138.73503,
-          "altitude": 2431
-        },
-        {
-          "lat": 35.33822,
-          "lng": 138.73547,
-          "altitude": 2451
-        },
-        {
-          "lat": 35.3385,
-          "lng": 138.73581,
-          "altitude": 2458
-        },
-        {
-          "lat": 35.339,
-          "lng": 138.73682,
-          "altitude": 2493
-        },
-        {
-          "lat": 35.33916,
-          "lng": 138.73739,
-          "altitude": 2501
-        },
-        {
-          "lat": 35.3392,
-          "lng": 138.73798,
-          "altitude": 2497
-        },
-        {
-          "lat": 35.33948,
-          "lng": 138.73826,
-          "altitude": 2506
-        },
-        {
-          "lat": 35.33969,
-          "lng": 138.73797,
-          "altitude": 2521
-        },
-        {
-          "lat": 35.34005,
-          "lng": 138.73809,
-          "altitude": 2538
-        },
-        {
-          "lat": 35.34035,
-          "lng": 138.73795,
-          "altitude": 2554
-        },
-        {
-          "lat": 35.34062,
-          "lng": 138.73802,
-          "altitude": 2566
-        },
-        {
-          "lat": 35.34084,
-          "lng": 138.73766,
-          "altitude": 2584
-        },
-        {
-          "lat": 35.34116,
-          "lng": 138.7377,
-          "altitude": 2602
-        },
-        {
-          "lat": 35.34116,
-          "lng": 138.73723,
-          "altitude": 2607
-        },
-        {
-          "lat": 35.34153,
-          "lng": 138.73711,
-          "altitude": 2624
-        },
-        {
-          "lat": 35.34197,
-          "lng": 138.73706,
-          "altitude": 2647
-        },
-        {
-          "lat": 35.34239,
-          "lng": 138.73679,
-          "altitude": 2675
-        },
-        {
-          "lat": 35.34289,
-          "lng": 138.73687,
-          "altitude": 2700
-        },
-        {
-          "lat": 35.34358,
-          "lng": 138.73694,
-          "altitude": 2733
-        },
-        {
-          "lat": 35.34446,
-          "lng": 138.73727,
-          "altitude": 2769
-        },
-        {
-          "lat": 35.34465,
-          "lng": 138.73667,
-          "altitude": 2803
-        },
-        {
-          "lat": 35.34513,
-          "lng": 138.73625,
-          "altitude": 2830
-        },
-        {
-          "lat": 35.34575,
-          "lng": 138.73635,
-          "altitude": 2862
-        },
-        {
-          "lat": 35.34627,
-          "lng": 138.73619,
-          "altitude": 2891
-        },
-        {
-          "lat": 35.34673,
-          "lng": 138.73639,
-          "altitude": 2913
-        },
-        {
-          "lat": 35.34716,
-          "lng": 138.73588,
-          "altitude": 2947
-        },
-        {
-          "lat": 35.34754,
-          "lng": 138.73604,
-          "altitude": 2970
-        },
-        {
-          "lat": 35.34796,
-          "lng": 138.73572,
-          "altitude": 2992
-        },
-        {
-          "lat": 35.34839,
-          "lng": 138.73591,
-          "altitude": 3013
-        },
-        {
-          "lat": 35.34865,
-          "lng": 138.73529,
-          "altitude": 3035
-        },
-        {
-          "lat": 35.34901,
-          "lng": 138.73486,
-          "altitude": 3062
-        },
-        {
-          "lat": 35.34956,
-          "lng": 138.73559,
-          "altitude": 3086
-        },
-        {
-          "lat": 35.35021,
-          "lng": 138.73534,
-          "altitude": 3133
-        },
-        {
-          "lat": 35.35068,
-          "lng": 138.73558,
-          "altitude": 3156
-        },
-        {
-          "lat": 35.35109,
-          "lng": 138.73576,
-          "altitude": 3181
-        },
-        {
-          "lat": 35.35149,
-          "lng": 138.73544,
-          "altitude": 3214
-        },
-        {
-          "lat": 35.35191,
-          "lng": 138.73501,
-          "altitude": 3238
-        },
-        {
-          "lat": 35.35233,
-          "lng": 138.73482,
-          "altitude": 3266
-        },
-        {
-          "lat": 35.35278,
-          "lng": 138.73437,
-          "altitude": 3297
-        },
-        {
-          "lat": 35.35318,
-          "lng": 138.73416,
-          "altitude": 3323
-        },
-        {
-          "lat": 35.35357,
-          "lng": 138.73385,
-          "altitude": 3344
-        },
-        {
-          "lat": 35.35398,
-          "lng": 138.7333,
-          "altitude": 3371
-        },
-        {
-          "lat": 35.35453,
-          "lng": 138.73289,
-          "altitude": 3407
-        },
-        {
-          "lat": 35.35465,
-          "lng": 138.73244,
-          "altitude": 3422
-        },
-        {
-          "lat": 35.355,
-          "lng": 138.7325,
-          "altitude": 3437
-        },
-        {
-          "lat": 35.35536,
-          "lng": 138.73229,
-          "altitude": 3456
-        },
-        {
-          "lat": 35.35567,
-          "lng": 138.7321,
-          "altitude": 3475
-        },
-        {
-          "lat": 35.35593,
-          "lng": 138.73184,
-          "altitude": 3494
-        },
-        {
-          "lat": 35.35639,
-          "lng": 138.73127,
-          "altitude": 3529
-        },
-        {
-          "lat": 35.35686,
-          "lng": 138.73121,
-          "altitude": 3553
-        },
-        {
-          "lat": 35.35717,
-          "lng": 138.73072,
-          "altitude": 3578
-        },
-        {
-          "lat": 35.35783,
-          "lng": 138.731,
-          "altitude": 3609
-        },
-        {
-          "lat": 35.35839,
-          "lng": 138.73099,
-          "altitude": 3648
-        },
-        {
-          "lat": 35.35889,
-          "lng": 138.73113,
-          "altitude": 3678
-        },
-        {
-          "lat": 35.35929,
-          "lng": 138.73105,
-          "altitude": 3700
-        },
-        {
-          "lat": 35.35921,
-          "lng": 138.73114,
-          "altitude": 3696
-        },
-        {
-          "lat": 35.35876,
-          "lng": 138.73123,
-          "altitude": 3668
-        },
-        {
-          "lat": 35.35822,
-          "lng": 138.73111,
-          "altitude": 3636
-        },
-        {
-          "lat": 35.35767,
-          "lng": 138.73099,
-          "altitude": 3599
-        },
-        {
-          "lat": 35.35705,
-          "lng": 138.73093,
-          "altitude": 3568
-        },
-        {
-          "lat": 35.35677,
-          "lng": 138.73131,
-          "altitude": 3548
-        },
-        {
-          "lat": 35.35637,
-          "lng": 138.73158,
-          "altitude": 3523
-        },
-        {
-          "lat": 35.35582,
-          "lng": 138.7319,
-          "altitude": 3486
-        },
-        {
-          "lat": 35.35555,
-          "lng": 138.7321,
-          "altitude": 3469
-        },
-        {
-          "lat": 35.35523,
-          "lng": 138.73231,
-          "altitude": 3449
-        },
-        {
-          "lat": 35.35493,
-          "lng": 138.73247,
-          "altitude": 3434
-        },
-        {
-          "lat": 35.35458,
-          "lng": 138.73251,
-          "altitude": 3418
-        },
-        {
-          "lat": 35.35447,
-          "lng": 138.73304,
-          "altitude": 3402
-        },
-        {
-          "lat": 35.35388,
-          "lng": 138.73347,
-          "altitude": 3364
-        },
-        {
-          "lat": 35.35347,
-          "lng": 138.73391,
-          "altitude": 3339
-        },
-        {
-          "lat": 35.35307,
-          "lng": 138.73425,
-          "altitude": 3316
-        },
-        {
-          "lat": 35.35264,
-          "lng": 138.73429,
-          "altitude": 3292
-        },
-        {
-          "lat": 35.35231,
-          "lng": 138.735,
-          "altitude": 3262
-        },
-        {
-          "lat": 35.35183,
-          "lng": 138.73535,
-          "altitude": 3228
-        },
-        {
-          "lat": 35.35134,
-          "lng": 138.73548,
-          "altitude": 3206
-        },
-        {
-          "lat": 35.35104,
-          "lng": 138.73586,
-          "altitude": 3175
-        },
-        {
-          "lat": 35.35057,
-          "lng": 138.73548,
-          "altitude": 3150
-        },
-        {
-          "lat": 35.35008,
-          "lng": 138.73533,
-          "altitude": 3126
-        },
-        {
-          "lat": 35.34945,
-          "lng": 138.73546,
-          "altitude": 3083
-        },
-        {
-          "lat": 35.34888,
-          "lng": 138.73475,
-          "altitude": 3055
-        },
-        {
-          "lat": 35.34848,
-          "lng": 138.73544,
-          "altitude": 3025
-        },
-        {
-          "lat": 35.34828,
-          "lng": 138.73576,
-          "altitude": 3010
-        },
-        {
-          "lat": 35.34791,
-          "lng": 138.73584,
-          "altitude": 2989
-        },
-        {
-          "lat": 35.34744,
-          "lng": 138.73588,
-          "altitude": 2965
-        },
-        {
-          "lat": 35.3471,
-          "lng": 138.73609,
-          "altitude": 2940
-        },
-        {
-          "lat": 35.34662,
-          "lng": 138.73651,
-          "altitude": 2905
-        },
-        {
-          "lat": 35.34618,
-          "lng": 138.73643,
-          "altitude": 2884
-        },
-        {
-          "lat": 35.34558,
-          "lng": 138.73621,
-          "altitude": 2854
-        },
-        {
-          "lat": 35.345,
-          "lng": 138.73632,
-          "altitude": 2821
-        },
-        {
-          "lat": 35.34462,
-          "lng": 138.73685,
-          "altitude": 2796
-        },
-        {
-          "lat": 35.34408,
-          "lng": 138.73712,
-          "altitude": 2752
-        },
-        {
-          "lat": 35.34343,
-          "lng": 138.7369,
-          "altitude": 2727
-        },
-        {
-          "lat": 35.34269,
-          "lng": 138.73671,
-          "altitude": 2691
-        },
-        {
-          "lat": 35.34227,
-          "lng": 138.73683,
-          "altitude": 2668
-        },
-        {
-          "lat": 35.34178,
-          "lng": 138.73702,
-          "altitude": 2638
-        },
-        {
-          "lat": 35.34143,
-          "lng": 138.73711,
-          "altitude": 2619
-        },
-        {
-          "lat": 35.34116,
-          "lng": 138.73735,
-          "altitude": 2607
-        },
-        {
-          "lat": 35.34108,
-          "lng": 138.73772,
-          "altitude": 2597
-        },
-        {
-          "lat": 35.34076,
-          "lng": 138.7377,
-          "altitude": 2579
-        },
-        {
-          "lat": 35.34056,
-          "lng": 138.7381,
-          "altitude": 2562
-        },
-        {
-          "lat": 35.34023,
-          "lng": 138.73797,
-          "altitude": 2548
-        },
-        {
-          "lat": 35.33997,
-          "lng": 138.73802,
-          "altitude": 2535
-        },
-        {
-          "lat": 35.33964,
-          "lng": 138.73802,
-          "altitude": 2518
-        },
-        {
-          "lat": 35.33938,
-          "lng": 138.73825,
-          "altitude": 2502
-        },
-        {
-          "lat": 35.33919,
-          "lng": 138.7378,
-          "altitude": 2498
-        },
-        {
-          "lat": 35.33911,
-          "lng": 138.73729,
-          "altitude": 2499
-        },
-        {
-          "lat": 35.339,
-          "lng": 138.73674,
-          "altitude": 2492
-        },
-        {
-          "lat": 35.33847,
-          "lng": 138.73574,
-          "altitude": 2457
-        },
-        {
-          "lat": 35.33791,
-          "lng": 138.7352,
-          "altitude": 2441
-        },
-        {
-          "lat": 35.33756,
-          "lng": 138.73495,
-          "altitude": 2426
-        },
-        {
-          "lat": 35.33728,
-          "lng": 138.73444,
-          "altitude": 2410
-        },
-        {
-          "lat": 35.33702,
-          "lng": 138.73432,
-          "altitude": 2401
-        },
-        {
-          "lat": 35.33658,
-          "lng": 138.73411,
-          "altitude": 2380
-        }
-      ],
-      "color": "#228B22",
-      "border-color": "rgba(92, 214, 92, 0.3)",
-      "markers": [
-        {
-          "label": "5th Station",
-          "position": {
-            "lat": 35.33657237868571,
-            "lng": 138.73481383892624,
-            "altitude": 2400
-          }
-        },
-        {
-          "label": "New 6th Station",
-          "position": {
-            "lat": 35.33954330298974,
-            "lng": 138.73780805157676,
-            "altitude": 2490
-          }
-        },
-        {
-          "label": "7th Station (Old)",
-          "position": {
-            "lat": 35.34884196796309,
-            "lng": 138.73555399119365,
-            "altitude": 3250
-          }
-        },
-        {
-          "label": "9th Station",
-          "position": {
-            "lat": 35.35470711984004,
-            "lng": 138.73298067906578,
-            "altitude": 3460
-          }
-        },
-        {
-          "label": "Fujisan Hongu Shrine",
-          "position": {
-            "lat": 35.36013367538302,
-            "lng": 138.73165001897644,
-            "altitude": 3776
-          }
-        }
-      ]
-    },
-    {
       "id": "gotemba-trail",
       "name": "Gotemba Trail",
-      "key-points": ['Longest and most challenging trail.',
-        'Vast volcanic scenery.',
-        'Ideal for experienced climbers.'
+      "placeID": "ChIJVVXZUb9iGWARgtfzGONnAGQ",
+      "key-points": ['Longest and most challenging trail',
+        'Vast volcanic scenery',
+        'Ideal for experienced climbers'
       ],
+      "length": 19,
       "acent-time": '7-10 hours',
       "decent-time": '3-6 hours',
       "difficulty": 'Strenuous',
@@ -2799,6 +2207,16 @@ const trailData =
           "altitude": 1439
         }
       ],
+      "description": [
+        "Mt. Fuji: Gotemba Trail (富士山: 御殿場ルート) starts at Gotemba 5th Station and is the least crowded of all trails.",
+        "This trail is known for its long approach and sparse facilities. It is suitable for experienced climbers who prefer solitude and a more challenging ascent."
+      ],
+      "cameraCords": {
+        "center": [35.353331950115425, 138.77959052109878, 1821.872672295278],
+        "tilt": 95.11205466880858,
+        "heading": -43.61188402984363,
+        "range": 3587.5908866798272,
+      },
       "color": "#1E90FF",
       "border-color": "rgba(90, 174, 255, 0.3)",
       "markers": [
@@ -2818,6 +2236,660 @@ const trailData =
             "altitude": 2700
           }
         },
+      ]
+    },
+    {
+      "id": "fujinomiya-trail",
+      "name": "Fujinomiya Trail",
+      "placeID": "ChIJCUVwrqh9GWARwvFBIuWRAYQ",
+      "key-points": ['Shortest route to the summit',
+        'Great views of the Pacific Ocean',
+        'Second most popular'
+      ],
+      "length": 8.5,
+      "acent-time": '5-7 hours',
+      "decent-time": '3-5 hours',
+      "difficulty": 'Challenging',
+      "cords": [
+        {
+          "lat": 35.33658,
+          "lng": 138.73411,
+          "altitude": 2380
+        },
+        {
+          "lat": 35.33665,
+          "lng": 138.73414,
+          "altitude": 2384
+        },
+        {
+          "lat": 35.337,
+          "lng": 138.73443,
+          "altitude": 2401
+        },
+        {
+          "lat": 35.33731,
+          "lng": 138.73455,
+          "altitude": 2413
+        },
+        {
+          "lat": 35.33767,
+          "lng": 138.73503,
+          "altitude": 2431
+        },
+        {
+          "lat": 35.33822,
+          "lng": 138.73547,
+          "altitude": 2451
+        },
+        {
+          "lat": 35.3385,
+          "lng": 138.73581,
+          "altitude": 2458
+        },
+        {
+          "lat": 35.339,
+          "lng": 138.73682,
+          "altitude": 2493
+        },
+        {
+          "lat": 35.33916,
+          "lng": 138.73739,
+          "altitude": 2501
+        },
+        {
+          "lat": 35.3392,
+          "lng": 138.73798,
+          "altitude": 2497
+        },
+        {
+          "lat": 35.33948,
+          "lng": 138.73826,
+          "altitude": 2506
+        },
+        {
+          "lat": 35.33969,
+          "lng": 138.73797,
+          "altitude": 2521
+        },
+        {
+          "lat": 35.34005,
+          "lng": 138.73809,
+          "altitude": 2538
+        },
+        {
+          "lat": 35.34035,
+          "lng": 138.73795,
+          "altitude": 2554
+        },
+        {
+          "lat": 35.34062,
+          "lng": 138.73802,
+          "altitude": 2566
+        },
+        {
+          "lat": 35.34084,
+          "lng": 138.73766,
+          "altitude": 2584
+        },
+        {
+          "lat": 35.34116,
+          "lng": 138.7377,
+          "altitude": 2602
+        },
+        {
+          "lat": 35.34116,
+          "lng": 138.73723,
+          "altitude": 2607
+        },
+        {
+          "lat": 35.34153,
+          "lng": 138.73711,
+          "altitude": 2624
+        },
+        {
+          "lat": 35.34197,
+          "lng": 138.73706,
+          "altitude": 2647
+        },
+        {
+          "lat": 35.34239,
+          "lng": 138.73679,
+          "altitude": 2675
+        },
+        {
+          "lat": 35.34289,
+          "lng": 138.73687,
+          "altitude": 2700
+        },
+        {
+          "lat": 35.34358,
+          "lng": 138.73694,
+          "altitude": 2733
+        },
+        {
+          "lat": 35.34446,
+          "lng": 138.73727,
+          "altitude": 2769
+        },
+        {
+          "lat": 35.34465,
+          "lng": 138.73667,
+          "altitude": 2803
+        },
+        {
+          "lat": 35.34513,
+          "lng": 138.73625,
+          "altitude": 2830
+        },
+        {
+          "lat": 35.34575,
+          "lng": 138.73635,
+          "altitude": 2862
+        },
+        {
+          "lat": 35.34627,
+          "lng": 138.73619,
+          "altitude": 2891
+        },
+        {
+          "lat": 35.34673,
+          "lng": 138.73639,
+          "altitude": 2913
+        },
+        {
+          "lat": 35.34716,
+          "lng": 138.73588,
+          "altitude": 2947
+        },
+        {
+          "lat": 35.34754,
+          "lng": 138.73604,
+          "altitude": 2970
+        },
+        {
+          "lat": 35.34796,
+          "lng": 138.73572,
+          "altitude": 2992
+        },
+        {
+          "lat": 35.34839,
+          "lng": 138.73591,
+          "altitude": 3013
+        },
+        {
+          "lat": 35.34865,
+          "lng": 138.73529,
+          "altitude": 3035
+        },
+        {
+          "lat": 35.34901,
+          "lng": 138.73486,
+          "altitude": 3062
+        },
+        {
+          "lat": 35.34956,
+          "lng": 138.73559,
+          "altitude": 3086
+        },
+        {
+          "lat": 35.35021,
+          "lng": 138.73534,
+          "altitude": 3133
+        },
+        {
+          "lat": 35.35068,
+          "lng": 138.73558,
+          "altitude": 3156
+        },
+        {
+          "lat": 35.35109,
+          "lng": 138.73576,
+          "altitude": 3181
+        },
+        {
+          "lat": 35.35149,
+          "lng": 138.73544,
+          "altitude": 3214
+        },
+        {
+          "lat": 35.35191,
+          "lng": 138.73501,
+          "altitude": 3238
+        },
+        {
+          "lat": 35.35233,
+          "lng": 138.73482,
+          "altitude": 3266
+        },
+        {
+          "lat": 35.35278,
+          "lng": 138.73437,
+          "altitude": 3297
+        },
+        {
+          "lat": 35.35318,
+          "lng": 138.73416,
+          "altitude": 3323
+        },
+        {
+          "lat": 35.35357,
+          "lng": 138.73385,
+          "altitude": 3344
+        },
+        {
+          "lat": 35.35398,
+          "lng": 138.7333,
+          "altitude": 3371
+        },
+        {
+          "lat": 35.35453,
+          "lng": 138.73289,
+          "altitude": 3407
+        },
+        {
+          "lat": 35.35465,
+          "lng": 138.73244,
+          "altitude": 3422
+        },
+        {
+          "lat": 35.355,
+          "lng": 138.7325,
+          "altitude": 3437
+        },
+        {
+          "lat": 35.35536,
+          "lng": 138.73229,
+          "altitude": 3456
+        },
+        {
+          "lat": 35.35567,
+          "lng": 138.7321,
+          "altitude": 3475
+        },
+        {
+          "lat": 35.35593,
+          "lng": 138.73184,
+          "altitude": 3494
+        },
+        {
+          "lat": 35.35639,
+          "lng": 138.73127,
+          "altitude": 3529
+        },
+        {
+          "lat": 35.35686,
+          "lng": 138.73121,
+          "altitude": 3553
+        },
+        {
+          "lat": 35.35717,
+          "lng": 138.73072,
+          "altitude": 3578
+        },
+        {
+          "lat": 35.35783,
+          "lng": 138.731,
+          "altitude": 3609
+        },
+        {
+          "lat": 35.35839,
+          "lng": 138.73099,
+          "altitude": 3648
+        },
+        {
+          "lat": 35.35889,
+          "lng": 138.73113,
+          "altitude": 3678
+        },
+        {
+          "lat": 35.35929,
+          "lng": 138.73105,
+          "altitude": 3700
+        },
+        {
+          "lat": 35.35921,
+          "lng": 138.73114,
+          "altitude": 3696
+        },
+        {
+          "lat": 35.35876,
+          "lng": 138.73123,
+          "altitude": 3668
+        },
+        {
+          "lat": 35.35822,
+          "lng": 138.73111,
+          "altitude": 3636
+        },
+        {
+          "lat": 35.35767,
+          "lng": 138.73099,
+          "altitude": 3599
+        },
+        {
+          "lat": 35.35705,
+          "lng": 138.73093,
+          "altitude": 3568
+        },
+        {
+          "lat": 35.35677,
+          "lng": 138.73131,
+          "altitude": 3548
+        },
+        {
+          "lat": 35.35637,
+          "lng": 138.73158,
+          "altitude": 3523
+        },
+        {
+          "lat": 35.35582,
+          "lng": 138.7319,
+          "altitude": 3486
+        },
+        {
+          "lat": 35.35555,
+          "lng": 138.7321,
+          "altitude": 3469
+        },
+        {
+          "lat": 35.35523,
+          "lng": 138.73231,
+          "altitude": 3449
+        },
+        {
+          "lat": 35.35493,
+          "lng": 138.73247,
+          "altitude": 3434
+        },
+        {
+          "lat": 35.35458,
+          "lng": 138.73251,
+          "altitude": 3418
+        },
+        {
+          "lat": 35.35447,
+          "lng": 138.73304,
+          "altitude": 3402
+        },
+        {
+          "lat": 35.35388,
+          "lng": 138.73347,
+          "altitude": 3364
+        },
+        {
+          "lat": 35.35347,
+          "lng": 138.73391,
+          "altitude": 3339
+        },
+        {
+          "lat": 35.35307,
+          "lng": 138.73425,
+          "altitude": 3316
+        },
+        {
+          "lat": 35.35264,
+          "lng": 138.73429,
+          "altitude": 3292
+        },
+        {
+          "lat": 35.35231,
+          "lng": 138.735,
+          "altitude": 3262
+        },
+        {
+          "lat": 35.35183,
+          "lng": 138.73535,
+          "altitude": 3228
+        },
+        {
+          "lat": 35.35134,
+          "lng": 138.73548,
+          "altitude": 3206
+        },
+        {
+          "lat": 35.35104,
+          "lng": 138.73586,
+          "altitude": 3175
+        },
+        {
+          "lat": 35.35057,
+          "lng": 138.73548,
+          "altitude": 3150
+        },
+        {
+          "lat": 35.35008,
+          "lng": 138.73533,
+          "altitude": 3126
+        },
+        {
+          "lat": 35.34945,
+          "lng": 138.73546,
+          "altitude": 3083
+        },
+        {
+          "lat": 35.34888,
+          "lng": 138.73475,
+          "altitude": 3055
+        },
+        {
+          "lat": 35.34848,
+          "lng": 138.73544,
+          "altitude": 3025
+        },
+        {
+          "lat": 35.34828,
+          "lng": 138.73576,
+          "altitude": 3010
+        },
+        {
+          "lat": 35.34791,
+          "lng": 138.73584,
+          "altitude": 2989
+        },
+        {
+          "lat": 35.34744,
+          "lng": 138.73588,
+          "altitude": 2965
+        },
+        {
+          "lat": 35.3471,
+          "lng": 138.73609,
+          "altitude": 2940
+        },
+        {
+          "lat": 35.34662,
+          "lng": 138.73651,
+          "altitude": 2905
+        },
+        {
+          "lat": 35.34618,
+          "lng": 138.73643,
+          "altitude": 2884
+        },
+        {
+          "lat": 35.34558,
+          "lng": 138.73621,
+          "altitude": 2854
+        },
+        {
+          "lat": 35.345,
+          "lng": 138.73632,
+          "altitude": 2821
+        },
+        {
+          "lat": 35.34462,
+          "lng": 138.73685,
+          "altitude": 2796
+        },
+        {
+          "lat": 35.34408,
+          "lng": 138.73712,
+          "altitude": 2752
+        },
+        {
+          "lat": 35.34343,
+          "lng": 138.7369,
+          "altitude": 2727
+        },
+        {
+          "lat": 35.34269,
+          "lng": 138.73671,
+          "altitude": 2691
+        },
+        {
+          "lat": 35.34227,
+          "lng": 138.73683,
+          "altitude": 2668
+        },
+        {
+          "lat": 35.34178,
+          "lng": 138.73702,
+          "altitude": 2638
+        },
+        {
+          "lat": 35.34143,
+          "lng": 138.73711,
+          "altitude": 2619
+        },
+        {
+          "lat": 35.34116,
+          "lng": 138.73735,
+          "altitude": 2607
+        },
+        {
+          "lat": 35.34108,
+          "lng": 138.73772,
+          "altitude": 2597
+        },
+        {
+          "lat": 35.34076,
+          "lng": 138.7377,
+          "altitude": 2579
+        },
+        {
+          "lat": 35.34056,
+          "lng": 138.7381,
+          "altitude": 2562
+        },
+        {
+          "lat": 35.34023,
+          "lng": 138.73797,
+          "altitude": 2548
+        },
+        {
+          "lat": 35.33997,
+          "lng": 138.73802,
+          "altitude": 2535
+        },
+        {
+          "lat": 35.33964,
+          "lng": 138.73802,
+          "altitude": 2518
+        },
+        {
+          "lat": 35.33938,
+          "lng": 138.73825,
+          "altitude": 2502
+        },
+        {
+          "lat": 35.33919,
+          "lng": 138.7378,
+          "altitude": 2498
+        },
+        {
+          "lat": 35.33911,
+          "lng": 138.73729,
+          "altitude": 2499
+        },
+        {
+          "lat": 35.339,
+          "lng": 138.73674,
+          "altitude": 2492
+        },
+        {
+          "lat": 35.33847,
+          "lng": 138.73574,
+          "altitude": 2457
+        },
+        {
+          "lat": 35.33791,
+          "lng": 138.7352,
+          "altitude": 2441
+        },
+        {
+          "lat": 35.33756,
+          "lng": 138.73495,
+          "altitude": 2426
+        },
+        {
+          "lat": 35.33728,
+          "lng": 138.73444,
+          "altitude": 2410
+        },
+        {
+          "lat": 35.33702,
+          "lng": 138.73432,
+          "altitude": 2401
+        },
+        {
+          "lat": 35.33658,
+          "lng": 138.73411,
+          "altitude": 2380
+        }
+      ],
+      "description": [
+        "Mt. Fuji: Fujinomiya Trail (富士山: 富士宮ルート) begins at Fujinomiya 5th Station and is the shortest route to the summit.",
+        "This trail is steeper compared to others but features mountain huts and resting areas. It's popular among climbers looking for a shorter but more physically demanding experience."
+      ],
+      "cameraCords": {
+        "center": [35.321966646176165, 138.73392133066048, 2426.846624266959],
+        "tilt": 99.26498214629814,
+        "heading": 18.35798798304783,
+        "range": 0
+      },
+      "color": "#228B22",
+      "border-color": "rgba(92, 214, 92, 0.3)",
+      "markers": [
+        {
+          "label": "5th Station",
+          "position": {
+            "lat": 35.33657237868571,
+            "lng": 138.73481383892624,
+            "altitude": 2400
+          }
+        },
+        {
+          "label": "New 6th Station",
+          "position": {
+            "lat": 35.33954330298974,
+            "lng": 138.73780805157676,
+            "altitude": 2490
+          }
+        },
+        {
+          "label": "7th Station (Old)",
+          "position": {
+            "lat": 35.34884196796309,
+            "lng": 138.73555399119365,
+            "altitude": 3250
+          }
+        },
+        {
+          "label": "9th Station",
+          "position": {
+            "lat": 35.35470711984004,
+            "lng": 138.73298067906578,
+            "altitude": 3460
+          }
+        },
+        {
+          "label": "Fujisan Hongu Shrine",
+          "position": {
+            "lat": 35.36013367538302,
+            "lng": 138.73165001897644,
+            "altitude": 3776
+          }
+        }
       ]
     }
   ]

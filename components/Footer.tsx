@@ -9,16 +9,21 @@ const Footer = () => {
       <div>
         <h3>About</h3>
         <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit
-          explicabo eveniet ratione a maxime doloribus pariatur quisquam
-          architecto numquam incidunt. Tempore et qui blanditiis recusandae!
+          Daryaft (دریافت), an Urdu word meaning &quot;to explore&quot; and
+          &quot;to discover,&quot; embodies the essence of this website. It is
+          designed to guide users in exploring Mount Fuji, its trails, and the
+          experiences surrounding it.
+          <br />
+          <i>
+            This project was created as a submission for &quot;Google
+            Photorealistic 3D Maps Challenge&quot;.
+          </i>
         </p>
       </div>
       <div>
         <h3>Contact Me</h3>
         <ul>
           <li>
-            {' '}
             <a href="tel:+917993095402">+91 7993095402</a>
           </li>
           <li>
@@ -26,13 +31,15 @@ const Footer = () => {
             <a href="mailto:zu0827992@gmail.com">zu0827992@gmail.com</a>
           </li>
           <li>
-            <a href="https://github.com/username">GitHub</a>
+            <a href="https://github.com/Zeeyeah">GitHub</a>
           </li>
           <li>
-            <a href="https://github.com/username">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/ziya-uddin-70622a24b/">
+              LinkedIn
+            </a>
           </li>
           <li>
-            <a href="https://github.com/username">Instagram</a>
+            <a href="https://instagram.com/zeeyeahaha">Instagram</a>
           </li>
         </ul>
       </div>

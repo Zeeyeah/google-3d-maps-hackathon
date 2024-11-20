@@ -1,6 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useMapContext } from './MapContext'
-import { animateCamera } from './HelperFunctions'
+import {
+  animateCamera,
+  animateCameraWithCursor,
+  stopCameraAnimation,
+} from './HelperFunctions'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Styles from '@/app/styles/ViewPoints.module.css'
 import viewpointsData from '@/app/data/viewpointsdata.js'
@@ -23,6 +27,7 @@ interface ViewPoint {
 }
 const ViewPoints = () => {
   const { isSteady, isLoading } = useMapContext()
+  const [visible, setVisible] = useState<boolean>(false)
   const [selectedViewPoint, setSelectedViewPoint] =
     useState<string>('Minato City, Tokyo')
 
@@ -30,21 +35,53 @@ const ViewPoints = () => {
     if (isSteady) {
       ScrollTrigger.create({
         trigger: '#viewpoints',
-        start: 'top center',
+        start: 'top 10%',
         end: 'bottom center',
-        onEnter: () => selectViewPoint(selectedViewPoint),
+        onEnter: () => {
+          selectViewPoint(selectedViewPoint)
+        },
         onEnterBack: () => selectViewPoint(selectedViewPoint),
+        onLeaveBack: () => {},
+        onLeave: () => setVisible(false),
+      })
+      ScrollTrigger.create({
+        trigger: '#viewpoints',
+        start: 'top top',
+        end: 'bottom center',
+        onEnter: () => {
+          setVisible(true)
+        },
+        onLeaveBack: () => {
+          setVisible(false)
+        },
+        onLeave: () => setVisible(false),
       })
     }
   }, [isSteady])
 
   useEffect(() => {
     gsap.to('#viewpoints', {
-      backdropFilter: isLoading ? 'blur(50px)' : 'blur(0px)',
       duration: 1,
       ease: 'power2.inOut',
     })
   }, [isLoading])
+
+  useEffect(() => {
+    const selectedData = viewpointsData.find(
+      (data: ViewPoint) => data.name === selectedViewPoint
+    )
+
+    if (selectedData) {
+      const { tilt, heading } = selectedData.cords
+
+      if (visible) {
+        stopCameraAnimation(tilt, heading)
+        animateCameraWithCursor(tilt, heading)
+      } else {
+        stopCameraAnimation(tilt, heading)
+      }
+    }
+  }, [visible, selectedViewPoint])
 
   const selectViewPoint = (value: string = 'Minato City, Tokyo') => {
     const selectedData = viewpointsData.find(
@@ -151,7 +188,7 @@ const ViewPoints = () => {
               <path
                 d="M8 21C7.76667 21 7.56667 20.9333 7.4 20.8C7.23333 20.6667 7.10833 20.4917 7.025 20.275C6.70833 19.3417 6.30833 18.4667 5.825 17.65C5.35833 16.8333 4.7 15.875 3.85 14.775C3 13.675 2.30833 12.625 1.775 11.625C1.25833 10.625 1 9.41667 1 8C1 6.05 1.675 4.4 3.025 3.05C4.39167 1.68333 6.05 1 8 1C9.95 1 11.6 1.68333 12.95 3.05C14.3167 4.4 15 6.05 15 8C15 9.51667 14.7083 10.7833 14.125 11.8C13.5583 12.8 12.9 13.7917 12.15 14.775C11.25 15.975 10.5667 16.975 10.1 17.775C9.65 18.5583 9.275 19.3917 8.975 20.275C8.89167 20.5083 8.75833 20.6917 8.575 20.825C8.40833 20.9417 8.21667 21 8 21ZM8 10.5C8.7 10.5 9.29167 10.2583 9.775 9.775C10.2583 9.29167 10.5 8.7 10.5 8C10.5 7.3 10.2583 6.70833 9.775 6.225C9.29167 5.74167 8.7 5.5 8 5.5C7.3 5.5 6.70833 5.74167 6.225 6.225C5.74167 6.70833 5.5 7.3 5.5 8C5.5 8.7 5.74167 9.29167 6.225 9.775C6.70833 10.2583 7.3 10.5 8 10.5Z"
                 stroke="#fff"
-                stroke-width="1"
+                strokeWidth="1"
               />
             </svg>
 
@@ -159,7 +196,7 @@ const ViewPoints = () => {
           </div>
         ))}
       </div>
-      {!isLoading && <SelectedViewPortTitle />}
+      {<SelectedViewPortTitle />}
     </div>
   )
 }

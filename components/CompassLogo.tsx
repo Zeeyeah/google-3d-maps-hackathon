@@ -18,13 +18,13 @@ function CompassLogo() {
             cy="80"
             r="39"
             stroke="#A3A3A3"
-            stroke-width="2"
+            strokeWidth="2"
             shape-rendering="crispEdges"
           />
         </g>
         <g id="Ellipse 7" filter="url(#filter1_d_110_7)">
           <circle cx="80" cy="80" r="22" fill="#CACACA" />
-          <circle cx="80" cy="80" r="20.5" stroke="#CACACA" stroke-width="3" />
+          <circle cx="80" cy="80" r="20.5" stroke="#CACACA" strokeWidth="3" />
         </g>
         <circle
           id="Ellipse 3"
@@ -32,7 +32,7 @@ function CompassLogo() {
           cy="81"
           r="78.5"
           stroke="#ECECEC"
-          stroke-width="5"
+          strokeWidth="5"
         />
         <circle
           id="Ellipse 4"
@@ -40,62 +40,62 @@ function CompassLogo() {
           cy="81"
           r="69.5"
           stroke="#ECECEC"
-          stroke-width="3"
+          strokeWidth="3"
         />
         <g className={Styles.pin} id="pin-circle">
           <path
             id="Vector 17"
             d="M62.5 14L64.5 19.5M99 14L97 19.5M81 150V138"
             stroke="white"
-            stroke-linecap="round"
+            strokeLinecap="round"
           />
           <path
             id="Vector 3"
             d="M47 140L50.5 134.5M32.5 129.5L40.5 121.5M21.5 116L26 113M14 99L20 98"
             stroke="white"
-            stroke-linecap="round"
+            strokeLinecap="round"
           />
           <path
             id="Vector 12"
             d="M113.5 139L110 133.5M128 128.5L120 120.5M139 115L134.5 112M146.5 98L140.5 97"
             stroke="white"
-            stroke-linecap="round"
+            strokeLinecap="round"
           />
           <path
             id="Vector 13"
             d="M148.5 80H137"
             stroke="white"
-            stroke-linecap="round"
+            strokeLinecap="round"
           />
           <path
             id="Vector 9"
             d="M47 22L50.5 27.5M32.5 32.5L40.5 40.5M21.5 46L26 49M14 63L20 64"
             stroke="white"
-            stroke-linecap="round"
+            strokeLinecap="round"
           />
           <path
             id="Vector 14"
             d="M114.5 22L111 27.5M129 32.5L121 40.5M140 46L135.5 49M147.5 63L141.5 64"
             stroke="white"
-            stroke-linecap="round"
+            strokeLinecap="round"
           />
           <path
             id="Vector 4"
             d="M63 147.5L64.5 142"
             stroke="white"
-            stroke-linecap="round"
+            strokeLinecap="round"
           />
           <path
             id="Vector 15"
             d="M97.5 146.5L96 141"
             stroke="white"
-            stroke-linecap="round"
+            strokeLinecap="round"
           />
           <path
             id="Vector 16"
             d="M80.5 13V22"
             stroke="white"
-            stroke-linecap="round"
+            strokeLinecap="round"
           />
         </g>
         <path

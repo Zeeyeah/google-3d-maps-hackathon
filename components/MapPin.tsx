@@ -22,7 +22,7 @@ const MapPin: React.FC<MapPinProps> = ({ color, borderColor }) => {
           cy="16"
           r="16"
           fill={borderColor}
-          fill-opacity="0.3"
+          fillOpacity="0.3"
         />
         <circle
           id="outer_2"
@@ -30,7 +30,7 @@ const MapPin: React.FC<MapPinProps> = ({ color, borderColor }) => {
           cy="16"
           r="13.1765"
           fill={borderColor}
-          fill-opacity="0.3"
+          fillOpacity="0.3"
         />
         <circle
           id="outer_3"
@@ -38,7 +38,7 @@ const MapPin: React.FC<MapPinProps> = ({ color, borderColor }) => {
           cy="15.9999"
           r="10.3529"
           fill={borderColor}
-          fill-opacity="0.3"
+          fillOpacity="0.3"
         />
       </g>
     </svg>

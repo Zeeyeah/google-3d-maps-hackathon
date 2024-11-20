@@ -1,5 +1,5 @@
 import { Loader } from '@googlemaps/js-api-loader'
-import { DebugUi } from './HelperFunctions'
+// import { DebugUi } from './HelperFunctions'
 
 import React, { useEffect, useRef } from 'react'
 import { useMapContext } from './MapContext'
@@ -65,11 +65,7 @@ const Map = () => {
     inti()
   }, [])
 
-  return (
-    <div>
-      <DebugUi />
-    </div>
-  )
+  return <div>{/* <DebugUi /> */}</div>
 }
 
 export default Map

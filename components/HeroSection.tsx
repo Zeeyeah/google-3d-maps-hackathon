@@ -52,11 +52,10 @@ const HeroSection = () => {
       <div className={Styles.logoContainer}>
         <div className="gsap-text-container">
           <h2 id="mount-fuji-hero-text">
-            {' '}
-            Exploring <i>Fujigoko</i>
+            Exploring <i>Mt. Fuji</i>
           </h2>
         </div>
-        <h3>hot springs, scenic lakes & mountains</h3>
+        <h6>A Virtual Tour & Guide</h6>
       </div>
       <div className={Styles.scrollIcon}>{/* <CompassLogo /> */}</div>
     </div>

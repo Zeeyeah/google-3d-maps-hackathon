@@ -6,10 +6,7 @@ import trailData from '@/app/data/traildata.js'
 import { Loader } from '@googlemaps/js-api-loader'
 import MapPin from './MapPin'
 import { renderToString } from 'react-dom/server'
-import YoshidaTrail from './Trails/YoshidaTrail'
-import SubashiTrail from './Trails/SubashiTrail'
-import FujinomiyaTrail from './Trails/FujinomiyaTrail'
-import GotembaTrail from './Trails/GotembaTrail'
+import Trail from './Trail'
 
 type CustomStyles = React.CSSProperties & {
   '--card-accent': string
@@ -31,6 +28,7 @@ const Trails = () => {
       ScrollTrigger.create({
         trigger: '#trails',
         start: 'top center',
+        end: 'bottom center',
         onEnter: () => addPolylines(),
         onLeaveBack: () => removePolylines(),
         onLeave: () => removePolylines(),
@@ -71,6 +69,35 @@ const Trails = () => {
   //     }
   //   }
   // }, [isSteady, selectedTrail])
+  interface Trail {
+    id: string
+    name: string
+    placeID: string
+    length: number
+    'key-points': string[]
+    'acent-time': string
+    'decent-time': string
+    difficulty: string
+    description: string[]
+    cords: number[]
+    cameraCords: {
+      center: [number, number, number]
+      tilt: number
+      heading: number
+      range: number
+    }
+    color: string
+    'border-color': string
+
+    markers: {
+      label: string
+      position: {
+        lat: number
+        lng: number
+        altitude: number
+      }
+    }[]
+  }
 
   const addPolylines = async () => {
     const gmpMap = document.querySelector('gmp-map-3d')
@@ -156,6 +183,7 @@ const Trails = () => {
   }
 
   const handleMouseEnter = (id: string) => {
+    console.log('Mouse entered')
     document
       .querySelectorAll(`gmp-polyline-3d:not(#${id})`)
       .forEach((polyline) => {
@@ -166,9 +194,10 @@ const Trails = () => {
       polyline.setAttribute('stroke-width', '0')
     })
 
-    const polyline = document.querySelector(`.${id}`)
+    const polyline = document.querySelector(`${id}`)
     const polylineGlow = document.getElementById(`${id}-glow`)
-    console.log(polyline)
+
+    console.log(polyline, polylineGlow)
     if (polyline) polyline.setAttribute('stroke-width', '5')
     if (polylineGlow) polylineGlow.setAttribute('stroke-width', '10')
   }
@@ -235,7 +264,7 @@ const Trails = () => {
                     viewBox="0 0 20 12"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
-                    style={{ marginLeft: '5px' }}
+                    style={{ marginLeft: '5px', display: 'inline-block' }}
                   >
                     <path
                       d="M11.25 1.25H13.5C13.9925 1.25 14.4801 1.347 14.9351 1.53545C15.39 1.72391 15.8034 2.00013 16.1517 2.34835C16.4999 2.69657 16.7761 3.10997 16.9645 3.56494C17.153 4.01991 17.25 4.50754 17.25 5C17.25 5.49246 17.153 5.98009 16.9645 6.43506C16.7761 6.89003 16.4999 7.30343 16.1517 7.65165C15.8034 7.99987 15.39 8.27609 14.9351 8.46455C14.4801 8.653 13.9925 8.75 13.5 8.75H11.25M6.75 8.75H4.5C4.00754 8.75 3.51991 8.653 3.06494 8.46455C2.60997 8.27609 2.19657 7.99987 1.84835 7.65165C1.14509 6.94839 0.75 5.99456 0.75 5C0.75 4.00544 1.14509 3.05161 1.84835 2.34835C2.55161 1.64509 3.50544 1.25 4.5 1.25H6.75M6 5H12"
@@ -250,15 +279,15 @@ const Trails = () => {
             ))}
           </div>
           <div className={Styles.trailsBefore}>
-            <li>
-              <h3>Before you go</h3>
-              <p>
-                Hiking Mount Fuji is an incredible experience, but preparation
-                is key to ensuring a safe and enjoyable journey. Here&apos;s a
-                brief guide on what to do and carry:
-              </p>
-            </li>
             <ul>
+              <li>
+                <h3>Before you go</h3>
+                <p>
+                  Hiking Mount Fuji is an incredible experience, but preparation
+                  is key to ensuring a safe and enjoyable journey. Here&apos;s a
+                  brief guide on what to do and carry:
+                </p>
+              </li>
               <li>
                 <h3>What to Carry for the Hike</h3>
                 <p>
@@ -284,10 +313,13 @@ const Trails = () => {
             </ul>
           </div>
         </div>
-        <YoshidaTrail />
-        <SubashiTrail />
-        <GotembaTrail />
-        <FujinomiyaTrail />
+
+        {
+          //@ts-expect-error Dont have time to fix this
+          trailData.map((trail: Trail) => {
+            return <Trail key={trail.id} trail={trail} />
+          })
+        }
       </div>
     </div>
   )
