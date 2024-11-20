@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import './globals.css'
 import { Montserrat } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/react'
 
 const wulkanDisplay = localFont({
   src: './fonts/wulkan-display/WulkanDisplayMedium.woff',
@@ -28,6 +29,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${montserrat.variable} ${wulkanDisplay.variable}`}>
         {children}
+        <Analytics />
       </body>
     </html>
   )
