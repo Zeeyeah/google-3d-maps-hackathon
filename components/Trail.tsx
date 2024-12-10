@@ -142,7 +142,7 @@ const Trail = ({ trail }: TrailProps) => {
             />
           </svg>
           <p>Difficulty</p>
-          <h3>Medium</h3>
+          <h3>{trail.difficulty}</h3>
         </div>
         <div>
           <svg
@@ -158,7 +158,7 @@ const Trail = ({ trail }: TrailProps) => {
             />
           </svg>
           <p>Acent Time</p>
-          <h3>2 hours</h3>
+          <h3>{trail['acent-time']}</h3>
         </div>
         <div>
           <svg
@@ -175,7 +175,7 @@ const Trail = ({ trail }: TrailProps) => {
           </svg>
 
           <p>Decent Time</p>
-          <h3>2 hours</h3>
+          <h3>{trail['decent-time']}</h3>
         </div>
       </div>
       <TrailRatings placeId={trail.placeID as string} />
