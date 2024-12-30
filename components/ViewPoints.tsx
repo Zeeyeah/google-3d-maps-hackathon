@@ -91,8 +91,9 @@ const ViewPoints = () => {
     if (selectedData) {
       const { lat, lng, altitude } = selectedData.cords.center
       const { tilt, heading, range } = selectedData.cords
-
-      animateCamera([lat, lng, altitude], tilt, heading, range, 0)
+      if (selectedData.cords) {
+        animateCamera([lat, lng, altitude], tilt, heading, range, 0)
+      }
     }
   }
 
