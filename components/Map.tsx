@@ -10,7 +10,7 @@ const Map = () => {
 
   const loader = new Loader({
     apiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY as string,
-    version: 'alpha',
+    version: 'beta',
   })
 
   useEffect(() => {
@@ -34,6 +34,7 @@ const Map = () => {
           tilt: 98.58085590884983,
           heading: -168.71172606271776,
           range: 0,
+          mode: 'HYBRID',
         })
 
         const mapWrapper = document.createElement('div')
